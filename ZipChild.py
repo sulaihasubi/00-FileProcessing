@@ -121,6 +121,13 @@ for i in range(len(paths)):
         }
         data.append(file)
 
+# create JsonFile
+json_object = json.dumps(mainData, indent=4)
+with open("/Users/risehill/Documents/00-FileProcessing/ZipChild.json", "w") as outfile:
+    outfile.write(json_object)
+
+
+# insert into the mongodb
 for i in range(len(data)):
     mainData['File' + str(i+1)] = data[i]
 Collection.insert_one(mainData)
